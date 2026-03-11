@@ -1,22 +1,44 @@
-{% load static %}
+{% extends 'associado/base.html' %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SindApp - Gerenciamento Associados com Tecnologia</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+{% block content %}
+     
+   <main class="container-dashboard">
+     <header class="header-interna">
+        <h1>Painel Administrativo</h1>
+        <p>Bem-vindo ao sistema de gestão do SindApp.</p>
+     </header>
 
-<header class="topo-principal">
-    <div class="container">
-        <img src="{% static 'assets/logo_sem_fundo.png' %}" alt="Logo SindApp" width="15%">
-        <nav class="menu">
-            <a href="#">Início</a>
-            <a href="#">Benefícios</a>
-            <a href="#">Carteirinha</a>
-        </nav>
-    </div>
-</header>
-</html>
+     <div class="cards-grid">
+        <div class="card-status azul">
+            <h3>1.240</h3>
+            <p>Sócios Ativos</p>
+        </div>
+        <div class="card-status verde">
+            <h3>45</h3>
+            <p>Novas Adesões</p>
+        </div>
+        <div class="card-status laranja">
+            <h3>12</h3>
+            <p>Pendentes</p>
+        </div>
+     </div>
+
+     <div class="acoes-dashboard">
+        <button class="btn-novo">+ Novo Sócio</button>
+        <div class="busca-container-direita">
+           {% include 'associado/partials/_busca.html' %}
+        </div>
+     </div>  
+
+     <section class="tabela-socios">
+        <h2>Últimos Associados Atualizados</h2>
+        <div class="linha-socio">
+            <span>ID: #001</span>
+            <strong>Ricardo Oliveira</strong>
+            <span class="badge ativo">Ativo</span>
+            <a href="{% url 'perfil' %}" class="btn-link">Ver Perfil</a>
+        </div>
+     </section>
+   </main>
+
+{% endblock %}
