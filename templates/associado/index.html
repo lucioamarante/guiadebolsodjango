@@ -32,13 +32,24 @@
 
      <section class="tabela-socios">
         <h2>Últimos Associados Atualizados</h2>
+        {% for associado in lista_associados %}
         <div class="linha-socio">
-            <span>ID: #001</span>
-            <strong>Ricardo Oliveira</strong>
-            <span class="badge ativo">Ativo</span>
+            <span>ID:{{associado.id}}</span>
+            <strong>{{associado.nome}}</strong>
+            <span class="badge ativo">{{associado.status}}</span>
             <a href="{% url 'perfil' %}" class="btn-link">Ver Perfil</a>
         </div>
+      {% endfor %}  
+
+     
      </section>
    </main>
+   <div class="filtro-container">
+      <form method="GET" action="{% url 'perfil' %}">
+          <input type="text" name="search" placeholder="Buscar por nome ou status..." value="{{ request.GET.search }}">
+          <button type="submit" class="btn-buscar">Filtrar</button>
+          <a href="{% url 'perfil' %}" class="btn-limpar">Limpar</a>
+      </form>
+  </div>
 
 {% endblock %}
